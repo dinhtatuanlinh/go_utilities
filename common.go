@@ -1,6 +1,7 @@
 package utilities
 
 import (
+	"encoding/base64"
 	"github.com/jackc/pgx/v5/pgtype"
 	"google.golang.org/protobuf/types/known/timestamppb"
 	"time"
@@ -192,4 +193,19 @@ func FromTimestamppb(value *timestamppb.Timestamp) *time.Time {
 		return nil
 	}
 	return NewPointer(value.AsTime())
+}
+
+func TimestamppbToTime(val *timestamppb.Timestamp) *time.Time {
+	if val == nil {
+		return nil
+	}
+	return NewPointer(val.AsTime())
+}
+
+func Base64Decode(base64Str string) (string, error) {
+	decodedBytes, err := base64.StdEncoding.DecodeString(base64Str)
+	if err != nil {
+		return "", err
+	}
+	return string(decodedBytes), nil
 }
