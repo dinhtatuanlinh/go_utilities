@@ -1,4 +1,4 @@
-module github.com/dinhtatuanlinh/go-utilities
+module github.com/dinhtatuanlinh/go_utilities
 
 go 1.24.3
 
